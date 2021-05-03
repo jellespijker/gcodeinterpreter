@@ -14,21 +14,24 @@ class Token
 {
 public:
   enum Type { LINE,
+    MACHINE,
     COMMAND,
+    TOOL,
     VARIABLE,
     VALUE,
     COMMENT };
 
-  Token(std::string_view word, Type token_type);
+  Token(const std::string_view word, const Type token_type) : m_word(word), m_type(token_type){};
 
   friend std::ostream& operator<<(std::ostream& os, const Token& token);
 
-  [[nodiscard]] std::string_view getWord() const;
+  [[nodiscard]] const std::string_view& getWord() const;
 
   [[nodiscard]] Type getType() const;
 
-protected:
+private:
   std::string_view m_word;
+
   Type m_type;
 };
 

@@ -6,11 +6,38 @@
 
 namespace ghermeneus {
 
-Token::Token(std::string_view word, Token::Type token_type) : m_word(word), m_type(token_type)
+std::ostream& operator<<(std::ostream& os, const Token& token)
 {
+  os << "word: " << token.m_word << " type: ";
+  switch (token.m_type) {
+  case Token::LINE:
+    os << "Line";
+    break;
+  case Token::MACHINE:
+    os << "Machine";
+    break;
+  case Token::TOOL:
+    os << "Tool";
+    break;
+  case Token::COMMAND:
+    os << "Command";
+    break;
+  case Token::VARIABLE:
+    os << "Variable";
+    break;
+  case Token::VALUE:
+    os << "Value";
+    break;
+  case Token::COMMENT:
+    os << "Comment";
+    break;
+  default:
+    os << "Unknown";
+  }
+  return os;
 }
 
-std::string_view Token::getWord() const
+const std::string_view& Token::getWord() const
 {
   return m_word;
 }
@@ -18,12 +45,6 @@ std::string_view Token::getWord() const
 Token::Type Token::getType() const
 {
   return m_type;
-}
-
-std::ostream& operator<<(std::ostream& os, const Token& token)
-{
-  os << "m_word: " << token.m_word << " m_type: " << token.m_type;
-  return os;
 }
 
 }// namespace ghermeneus
