@@ -9,6 +9,7 @@
 #include <map>
 
 #include "ghermeneus/Lexer.h"
+#include "ghermeneus/Parser.h"
 
 using namespace ghermeneus;
 
@@ -51,4 +52,7 @@ int main(int argc, char* argv[])
 
   ghermeneus::Lexer lexer;
   lexer << gcode_file;
+
+  ghermeneus::Parser parser;
+  parser << lexer;
 }
