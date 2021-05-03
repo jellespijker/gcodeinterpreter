@@ -123,13 +123,32 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY
 set(SRC_FILES
         src/Token.cpp
         src/Lexer.cpp
-        src/Parser.cpp)
-
+        src/Parser.cpp
+        src/ElementFactory.cpp
+        src/AST/Element.cpp
+        src/AST/MachineElement.cpp
+        src/AST/ToolElement.cpp
+        src/AST/ChangeElement.cpp
+        src/AST/MotionElement.cpp
+        src/AST/CoordinateElement.cpp
+        src/AST/CommentElement.cpp
+        src/AST/NumericElement.cpp
+        )
 
 set(HDR_FILES
         include/ghermeneus/Token.h
         include/ghermeneus/Lexer.h
-        include/ghermeneus/Parser.h)
+        include/ghermeneus/Parser.h
+        include/ghermeneus/ElementFactory.h
+        include/ghermeneus/AST/Element.h
+        include/ghermeneus/AST/MachineElement.h
+        include/ghermeneus/AST/ToolElement.h
+        include/ghermeneus/AST/ChangeElement.h
+        include/ghermeneus/AST/MotionElement.h
+        include/ghermeneus/AST/CoordinateElement.h
+        include/ghermeneus/AST/CommentElement.h
+        include/ghermeneus/AST/NumericElement.h
+        )
 
 add_library(ghermeneus STATIC ${SRC_FILES} ${HDR_FILES})
 
