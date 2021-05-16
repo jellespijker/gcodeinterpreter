@@ -11,13 +11,16 @@ namespace ghermeneus {
 class ToolElement : public Element
 {
 public:
-  explicit ToolElement(const Token& token) : Element(token){};
+  explicit ToolElement(const Token& token) : Element{ token }, m_tool_index{ 0 } {};
 
   [[nodiscard]] row_t eval() const override;
 
   [[nodiscard]] bool isParent() const override;
+
+protected:
+  [[maybe_unused]] size_t m_tool_index;
 };
 
 }// namespace ghermeneus
 
-#endif//GHERMENEUS_TOOLELEMENT_H
+#endif// GHERMENEUS_TOOLELEMENT_H

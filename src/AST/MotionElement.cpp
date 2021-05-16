@@ -6,14 +6,8 @@
 
 namespace ghermeneus {
 
-row_t MotionElement::eval() const
-{
-  return row_t {};
-}
+row_t MotionElement::eval() const { return row_t{}; }
 
-bool MotionElement::isParent() const
-{
-  return false;
-}
+bool MotionElement::isParent() const { return false; }
 
 }// namespace ghermeneus

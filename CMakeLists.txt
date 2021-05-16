@@ -60,14 +60,6 @@ if(ENABLE_PCH)
             <ostream>
             <memory>
             <regex>
-            <range/v3/view/enumerate.hpp>
-            <range/v3/distance.hpp>
-            <range/v3/view/tail.hpp>
-            <range/v3/view/tokenize.hpp>
-            <range/v3/view/take.hpp>
-            <spdlog/spdlog.h>
-            <spdlog/fmt/ostr.h>
-            <docopt/docopt.h>
     )
 endif()
 
@@ -133,6 +125,7 @@ set(SRC_FILES
         src/AST/CoordinateElement.cpp
         src/AST/CommentElement.cpp
         src/AST/NumericElement.cpp
+        src/AST/TextElement.cpp
         )
 
 set(HDR_FILES
@@ -148,6 +141,7 @@ set(HDR_FILES
         include/ghermeneus/AST/CoordinateElement.h
         include/ghermeneus/AST/CommentElement.h
         include/ghermeneus/AST/NumericElement.h
+        include/ghermeneus/AST/TextElement.h
         )
 
 add_library(ghermeneus STATIC ${SRC_FILES} ${HDR_FILES})

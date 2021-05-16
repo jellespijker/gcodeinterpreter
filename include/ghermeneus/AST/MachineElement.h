@@ -12,7 +12,7 @@ namespace ghermeneus {
 class MachineElement : public Element
 {
 public:
-  explicit MachineElement(const Token& token) : Element(token){};
+  explicit MachineElement(const Token& token) noexcept : Element{ token } {};
 
   [[nodiscard]] row_t eval() const override;
 
@@ -20,4 +20,4 @@ public:
 };
 
 }// namespace ghermeneus
-#endif//GHERMENEUS_MACHINEELEMENT_H
+#endif// GHERMENEUS_MACHINEELEMENT_H

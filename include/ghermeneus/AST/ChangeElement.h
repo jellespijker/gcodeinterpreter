@@ -11,7 +11,7 @@ namespace ghermeneus {
 class ChangeElement : public Element
 {
 public:
-  explicit ChangeElement(const Token& token) : Element(token){};
+  explicit ChangeElement(const Token& token) : Element{ token } {};
 
   [[nodiscard]] row_t eval() const override;
 
@@ -19,4 +19,4 @@ public:
 };
 }// namespace ghermeneus
 
-#endif//GHERMENEUS_CHANGEELEMENT_H
+#endif// GHERMENEUS_CHANGEELEMENT_H

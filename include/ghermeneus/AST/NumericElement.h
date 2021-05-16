@@ -8,14 +8,15 @@
 #include "ghermeneus/AST/Element.h"
 
 namespace ghermeneus {
-class NumericElement : public Element {
+class NumericElement : public Element
+{
 public:
-  explicit NumericElement(const Token& token) : Element(token) {};
+  explicit NumericElement(const Token& token) : Element{ token } {};
 
   [[nodiscard]] row_t eval() const override;
 
   [[nodiscard]] bool isParent() const override;
 };
-}
+}// namespace ghermeneus
 
-#endif//GHERMENEUS_NUMERICELEMENT_H
+#endif// GHERMENEUS_NUMERICELEMENT_H

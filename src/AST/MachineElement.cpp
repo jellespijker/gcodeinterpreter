@@ -6,13 +6,8 @@
 
 namespace ghermeneus {
 
-row_t MachineElement::eval() const
-{
-  return row_t {};
-}
+row_t MachineElement::eval() const { return row_t{}; }
 
-bool MachineElement::isParent() const
-{
-  return true;
-}
-}
+bool MachineElement::isParent() const { return true; }
+
+}// namespace ghermeneus

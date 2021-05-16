@@ -11,7 +11,7 @@ namespace ghermeneus {
 class CommentElement : public Element
 {
 public:
-  explicit CommentElement(const Token& token) : Element(token){};
+  explicit CommentElement(const Token& token) : Element{ token } {};
 
   [[nodiscard]] row_t eval() const override;
 
@@ -19,4 +19,4 @@ public:
 };
 }// namespace ghermeneus
 
-#endif//GHERMENEUS_COMMENTELEMENT_H
+#endif// GHERMENEUS_COMMENTELEMENT_H

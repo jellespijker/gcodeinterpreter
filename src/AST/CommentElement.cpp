@@ -8,14 +8,11 @@
 
 namespace ghermeneus {
 
-row_t CommentElement::eval() const
-{
-  return row_t{};
-}
+row_t CommentElement::eval() const { return row_t{}; }
 
 bool CommentElement::isParent() const
 {
-  return false; // FIXME for headers
+  return false;// FIXME for headers
 }
 
 }// namespace ghermeneus

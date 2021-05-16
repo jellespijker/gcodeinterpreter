@@ -22,7 +22,8 @@ Lexer& operator<<(Lexer& lexer, std::string_view gcode)
 {
   spdlog::info("Lexing the gcode file");
   const std::regex regword(R"(\b(\S+)\b|;)", std::regex_constants::ECMAScript);
-  const auto lines = Lexer::split(gcode, "\n");// TODO: Check with benchmark if this function is indeed quicker the ranges
+  const auto lines =
+    Lexer::split(gcode, "\n");// TODO: Check with benchmark if this function is indeed quicker the ranges
   constexpr size_t avg_tokens_per_line = 10;// Roughly 10 tokens per line
   std::vector<Token> tokens;
   tokens.reserve(lines.size() * avg_tokens_per_line);
@@ -56,7 +57,8 @@ Lexer& operator<<(Lexer& lexer, std::string_view gcode)
         const auto atom = get_sv(argument);
         const auto arg = std::string_view{ atom.begin(), 1 };// This can either be a comment or a variable name
         if (arg.starts_with(';')) {// Construct a comment and skip the remaining words since these belong to the comment
-          const auto comment = std::string_view{ atom.begin() + arg.size(), line.second.size() - line.second.find(';') - 1 };
+          const auto comment =
+            std::string_view{ atom.begin() + arg.size(), line.second.size() - line.second.find(';') - 1 };
           tokens.emplace_back(Token{ comment, Token::COMMENT });
           spdlog::debug("Line {} -> Lexing token<{}>", line.first, tokens.back());
           break;
@@ -64,7 +66,8 @@ Lexer& operator<<(Lexer& lexer, std::string_view gcode)
         // TODO: implement the T variable (no-prio since UM doesn't use that in such a way)
         tokens.emplace_back(Token{ arg, Token::VARIABLE });
         spdlog::debug("Line {} -> Lexing token<{}>", line.first, tokens.back());
-        const auto value = std::string_view{ atom.begin() + 1, atom.size() - 1 };// This is the numeric value of the variable
+        const auto value =
+          std::string_view{ atom.begin() + 1, atom.size() - 1 };// This is the numeric value of the variable
         tokens.emplace_back(Token{ value, Token::VALUE });
         spdlog::debug("Line {} -> Lexing token<{}>", line.first, tokens.back());
       }
@@ -94,37 +97,21 @@ std::vector<std::string_view> Lexer::split(std::string_view strv, std::string_vi
   while (first < strv.size()) {
     const auto second = strv.find_first_of(delims, first);
 
-    if (first != second) {
-      output.emplace_back(strv.substr(first, second - first));
-    }
+    if (first != second) { output.emplace_back(strv.substr(first, second - first)); }
 
-    if (second == std::string_view::npos) {
-      break;
-    }
+    if (second == std::string_view::npos) { break; }
     first = second + 1;
   }
 
   return output;
 }
 
-const std::vector<Token>& Lexer::getTokens() const
-{
-  return m_tokens;
-}
+const std::vector<Token>& Lexer::getTokens() const { return m_tokens; }
 
-void Lexer::setTokens(const std::vector<Token>& Tokens)
-{
-  m_tokens = Tokens;
-}
+void Lexer::setTokens(const std::vector<Token>& Tokens) { m_tokens = Tokens; }
 
-const std::string& Lexer::getRawData() const
-{
-  return m_raw_data;
-}
+const std::string& Lexer::getRawData() const { return m_raw_data; }
 
-void Lexer::setRawData(const std::string& rawData)
-{
-  m_raw_data = rawData;
-}
+void Lexer::setRawData(const std::string& rawData) { m_raw_data = rawData; }
 
 }// namespace ghermeneus

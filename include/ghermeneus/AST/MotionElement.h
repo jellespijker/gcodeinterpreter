@@ -12,7 +12,7 @@ namespace ghermeneus {
 class MotionElement : public Element
 {
 public:
-  explicit MotionElement(const Token& token, const elem_vec_t& variables) : Element(token, variables) {};
+  MotionElement(const Token& token, const elem_vec_t& variables) : Element{ token, variables } {};
 
   [[nodiscard]] row_t eval() const override;
 
@@ -21,4 +21,4 @@ public:
 
 }// namespace ghermeneus
 
-#endif//GHERMENEUS_MOTIONELEMENT_H
+#endif// GHERMENEUS_MOTIONELEMENT_H

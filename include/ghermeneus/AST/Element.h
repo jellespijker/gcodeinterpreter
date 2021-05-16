@@ -21,7 +21,9 @@ class Element
 public:
   explicit Element(const Token& token);
 
-  explicit Element(const Token& token, std::vector<std::shared_ptr<Element>> variables);
+  Element(const Token& token, const std::shared_ptr<Element>& variable);
+
+  Element(const Token& token, std::vector<std::shared_ptr<Element>>  variables);
 
   virtual ~Element() = default;
 
@@ -37,8 +39,8 @@ private:
 };
 
 using shared_elem_t = std::shared_ptr<Element>;
-using elem_vec_t = std::vector<shared_elem_t >;
+using elem_vec_t = std::vector<shared_elem_t>;
 
 }// namespace ghermeneus
 
-#endif//GHERMENEUS_ELEMENT_H
+#endif// GHERMENEUS_ELEMENT_H

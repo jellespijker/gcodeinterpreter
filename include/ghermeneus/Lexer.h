@@ -46,4 +46,4 @@ using svsub_match = std::sub_match<std::string_view::const_iterator>;
 
 }// namespace ghermeneus
 
-#endif//GHERMENEUS_LEXER_H
+#endif// GHERMENEUS_LEXER_H

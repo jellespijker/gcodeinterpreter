@@ -13,13 +13,7 @@ namespace ghermeneus {
 class Token
 {
 public:
-  enum Type { LINE,
-    MACHINE,
-    COMMAND,
-    TOOL,
-    VARIABLE,
-    VALUE,
-    COMMENT };
+  enum Type { LINE, MACHINE, COMMAND, TOOL, VARIABLE, VALUE, COMMENT };
 
   Token(const std::string_view word, const Type token_type) : m_word(word), m_type(token_type){};
 
@@ -37,4 +31,4 @@ private:
 
 }// namespace ghermeneus
 
-#endif//GHERMENEUS_TOKEN_H
+#endif// GHERMENEUS_TOKEN_H

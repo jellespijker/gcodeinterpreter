@@ -5,14 +5,8 @@
 
 namespace ghermeneus {
 
-row_t CoordinateElement::eval() const
-{
-  return row_t{};
-}
+row_t CoordinateElement::eval() const { return row_t{}; }
 
-bool CoordinateElement::isParent() const
-{
-  return true;
-}
+bool CoordinateElement::isParent() const { return true; }
 
 }// namespace ghermeneus

@@ -11,7 +11,7 @@ namespace ghermeneus {
 class CoordinateElement : public Element
 {
 public:
-  explicit CoordinateElement(const Token& token, elem_vec_t variables) : Element(token, variables){};
+  CoordinateElement(const Token& token, const shared_elem_t& variables) : Element{ token, variables } {};
 
   [[nodiscard]] row_t eval() const override;
 
@@ -19,4 +19,4 @@ public:
 };
 }// namespace ghermeneus
 
-#endif//GHERMENEUS_COORDINATEELEMENT_H
+#endif// GHERMENEUS_COORDINATEELEMENT_H

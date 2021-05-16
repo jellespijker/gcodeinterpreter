@@ -37,14 +37,8 @@ std::ostream& operator<<(std::ostream& os, const Token& token)
   return os;
 }
 
-const std::string_view& Token::getWord() const
-{
-  return m_word;
-}
+const std::string_view& Token::getWord() const { return m_word; }
 
-Token::Type Token::getType() const
-{
-  return m_type;
-}
+Token::Type Token::getType() const { return m_type; }
 
 }// namespace ghermeneus

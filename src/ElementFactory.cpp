@@ -6,81 +6,100 @@
 #include <range/v3/all.hpp>
 #include <range/v3/range/conversion.hpp>
 
-#include <ghermeneus/ElementFactory.h>
+#include "ghermeneus/ElementFactory.h"
 #include "ghermeneus/AST/MotionElement.h"
 #include "ghermeneus/AST/ToolElement.h"
 #include "ghermeneus/AST/CommentElement.h"
 #include "ghermeneus/AST/ChangeElement.h"
 #include "ghermeneus/AST/NumericElement.h"
 #include "ghermeneus/AST/MachineElement.h"
+#include "ghermeneus/AST/CoordinateElement.h"
+#include "ghermeneus/AST/TextElement.h"
+
 
 namespace rg = ranges;
 namespace rv = ranges::views;
 
 namespace ghermeneus {
 
+
 shared_opt_elem_t ElementFactory::newElement(const Token& token)
 {
   switch (token.getType()) {
   case Token::MACHINE:
-    return std::make_unique<MachineElement>(token);
-    break;
+    return std::make_shared<MachineElement>(token);
   default:
     return std::nullopt;
   }
 }
 
-shared_opt_elem_t ElementFactory::newElement(const std::vector<Token>& line)
-{
-  const auto cmd_view = line | rv::take(1);
-  const auto args_view = line | rv::tail;
-  const auto cmd = *cmd_view.begin();
-  for (const auto& args : args_view) {
-
-  }
-  return std::nullopt;
-}
-
 shared_opt_elem_t ElementFactory::newElement(const std::vector<Token>& line, const shared_opt_elem_t& parent)
 {
   auto elem = ElementFactory::newElement(line);
-  if (parent.has_value() && elem.has_value()) {
-    parent.value()->push_back_child(elem.value());
-  }
+  if (parent.has_value() && elem.has_value()) { parent.value()->push_back_child(elem.value()); }
   return elem;
 }
 
-shared_opt_elem_t ElementFactory::newCommandElement(const std::vector<Token>& line, const shared_opt_elem_t& parent = std::nullopt)
+shared_opt_elem_t ElementFactory::newElement(const std::vector<Token>& line)
 {
-  const auto cmd_word = line.front().getWord();
-  const auto var = line | rv::tail | rg::to_vector;
-  if (cmd_word == "G0" || cmd_word == "G1") {
-    auto elem = std::make_unique<MotionElement>(line.front());
-    elem->setVariables(var);
-    return elem;
-  } else if (cmd_word == "M82") {
-    auto elem = std::make_unique<ChangeElement>(line.front());
-    elem->setVariables(var);
+  const auto cmd_view = line | rv::take(1);
+  const auto args = line | rv::tail | rg::to_vector;
+  const auto cmd = *cmd_view.begin();
+  switch (cmd.getType()) {
+  case Token::TOOL:// A TOOL token
+    return newToolElement(cmd, args.front());
+  case Token::COMMAND:// COMMAND TOKENS such as G0, M280 etc.
+    return newCommandElement(cmd, args);
+  case Token::COMMENT:// A COMMENT TOKEN, doesn't handle command comments yet.
+    return newCommentElement(cmd);
+  default:
+    return std::nullopt;
+  }
+}
+
+shared_opt_elem_t ElementFactory::newCommandElement(const Token& cmd, const std::vector<Token>& args)
+{
+  if (cmd.getWord() == "G0" || cmd.getWord() == "G1")// MotionElement
+  {
+    return newMotionElement(cmd, args);
   }
   return std::nullopt;
 }
 
-shared_opt_elem_t ElementFactory::newToolElement(const std::vector<Token>& line, shared_opt_elem_t parent = std::nullopt)
+shared_opt_elem_t ElementFactory::newCommentElement(const Token& cmd)
 {
-  auto elem = std::make_unique<ToolElement>(line.front());
-  elem->setVariables(line | rv::tail | rg::to_vector);
-  return elem;
+  if (cmd.getWord().starts_with(";"))// TODO: check if this is generic enough for now
+  {
+    return std::make_shared<TextElement>(cmd);
+  }
+  // TODO: Handle comments that are actually commands
+  return std::nullopt;
 }
 
-shared_opt_elem_t ElementFactory::newCommentElement(const std::vector<Token>& line, shared_opt_elem_t parent = std::nullopt)
+shared_opt_elem_t ElementFactory::newCoordinateElement(const Token& arg, const Token& value)
 {
-  auto elem = std::make_unique<CommentElement>(line.front());
-  elem->setVariables(line | rv::tail | rg::to_vector);
-  return elem;
+  const auto& value_elem = std::make_shared<NumericElement>(value);
+  return std::make_shared<CoordinateElement>(arg, value_elem);
 }
-shared_opt_elem_t ElementFactory::newMachineElement(const std::vector<Token>& line, shared_opt_elem_t parent)
+
+shared_opt_elem_t ElementFactory::newMotionElement(const Token& cmd, const std::vector<Token>& args)
 {
-  return ghermeneus::shared_opt_elem_t();
+  const auto& coord_tokens = args | rv::chunk(2);
+  elem_vec_t arg_elems;
+  for (const auto& coord_token : coord_tokens) {
+    const auto& p = coord_token | rg::to_vector;
+    const auto& s = newCoordinateElement(p.front(), p.back());
+    if (s.has_value()) { arg_elems.emplace_back(s.value()); }
+  }
+  return std::make_shared<MotionElement>(cmd, arg_elems);
+}
+
+shared_opt_elem_t ElementFactory::newToolElement(const Token& cmd, const Token& arg)
+{
+  const auto value_elem = std::make_shared<NumericElement>(arg);
+  auto tool_elem = std::make_shared<ToolElement>(cmd);
+  tool_elem->push_back_child(value_elem);
+  return tool_elem;
 }
 
 }// namespace ghermeneus
