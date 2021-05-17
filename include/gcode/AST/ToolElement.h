@@ -2,12 +2,12 @@
 // Created by Jelle Spijker on 02-05-21.
 //
 
-#ifndef GHERMENEUS_TOOLELEMENT_H
-#define GHERMENEUS_TOOLELEMENT_H
+#ifndef GCODE_TOOLELEMENT_H
+#define GCODE_TOOLELEMENT_H
 
 #include "Element.h"
 
-namespace ghermeneus {
+namespace gcode {
 class ToolElement : public Element
 {
 public:
@@ -21,6 +21,6 @@ protected:
   [[maybe_unused]] size_t m_tool_index;
 };
 
-}// namespace ghermeneus
+}// namespace gcode
 
-#endif// GHERMENEUS_TOOLELEMENT_H
+#endif// GCODE_TOOLELEMENT_H

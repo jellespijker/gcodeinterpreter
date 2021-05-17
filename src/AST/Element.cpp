@@ -2,21 +2,21 @@
 // Created by Jelle Spijker on 02-05-21.
 //
 
-#include "ghermeneus/AST/Element.h"
+#include "gcode/AST/Element.h"
 
 #include <spdlog/spdlog.h>
 #include <spdlog/fmt/ostr.h>
 
 #include <utility>
 
-namespace ghermeneus {
+namespace gcode {
 
 Element::Element(const Token& token) : m_token{ token }, m_children{ elem_vec_t{} }
 {
   spdlog::debug("Parsing token: {}", token);
 }
 
-Element::Element(const Token& token, elem_vec_t  variables) : m_token{ token }, m_children{std::move( variables )}
+Element::Element(const Token& token, elem_vec_t variables) : m_token{ token }, m_children{ std::move(variables) }
 {
   spdlog::debug("Parsing token: {}", token);
 }

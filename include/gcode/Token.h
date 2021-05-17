@@ -2,14 +2,14 @@
 // Created by Jelle Spijker on 25-04-21.
 //
 
-#ifndef GHERMENEUS_TOKEN_H
-#define GHERMENEUS_TOKEN_H
+#ifndef GCODE_TOKEN_H
+#define GCODE_TOKEN_H
 
 #include <string_view>
 #include <memory>
 #include <ostream>
 
-namespace ghermeneus {
+namespace gcode {
 class Token
 {
 public:
@@ -29,6 +29,6 @@ private:
   Type m_type;
 };
 
-}// namespace ghermeneus
+}// namespace gcode
 
-#endif// GHERMENEUS_TOKEN_H
+#endif// GCODE_TOKEN_H

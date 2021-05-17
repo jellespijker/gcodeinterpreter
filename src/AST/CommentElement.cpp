@@ -4,9 +4,9 @@
 
 #include <map>
 #include <vector>
-#include <ghermeneus/AST/CommentElement.h>
+#include <gcode/AST/CommentElement.h>
 
-namespace ghermeneus {
+namespace gcode {
 
 row_t CommentElement::eval() const { return row_t{}; }
 
@@ -15,4 +15,4 @@ bool CommentElement::isParent() const
   return false;// FIXME for headers
 }
 
-}// namespace ghermeneus
+}// namespace gcode

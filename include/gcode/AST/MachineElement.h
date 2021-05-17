@@ -2,12 +2,12 @@
 // Created by Jelle Spijker on 02-05-21.
 //
 
-#ifndef GHERMENEUS_MACHINEELEMENT_H
-#define GHERMENEUS_MACHINEELEMENT_H
+#ifndef GCODE_MACHINEELEMENT_H
+#define GCODE_MACHINEELEMENT_H
 
 #include "Element.h"
 
-namespace ghermeneus {
+namespace gcode {
 
 class MachineElement : public Element
 {
@@ -19,5 +19,5 @@ public:
   [[nodiscard]] bool isParent() const override;
 };
 
-}// namespace ghermeneus
-#endif// GHERMENEUS_MACHINEELEMENT_H
+}// namespace gcode
+#endif// GCODE_MACHINEELEMENT_H

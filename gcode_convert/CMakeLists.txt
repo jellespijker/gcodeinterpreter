@@ -9,14 +9,14 @@ target_compile_options(gcode_convert
 
 target_link_libraries(gcode_convert
         PRIVATE
-            ghermeneus
-            project_options
+        gcodeinterpreter
+        project_options
             project_warnings)
 
 target_link_libraries(gcode_convert
         PRIVATE
-            ghermeneus
-            spdlog::spdlog
+        gcodeinterpreter
+        spdlog::spdlog
             docopt::docopt
         )
 

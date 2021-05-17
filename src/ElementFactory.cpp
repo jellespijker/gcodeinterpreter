@@ -6,21 +6,21 @@
 #include <range/v3/all.hpp>
 #include <range/v3/range/conversion.hpp>
 
-#include "ghermeneus/ElementFactory.h"
-#include "ghermeneus/AST/MotionElement.h"
-#include "ghermeneus/AST/ToolElement.h"
-#include "ghermeneus/AST/CommentElement.h"
-#include "ghermeneus/AST/ChangeElement.h"
-#include "ghermeneus/AST/NumericElement.h"
-#include "ghermeneus/AST/MachineElement.h"
-#include "ghermeneus/AST/CoordinateElement.h"
-#include "ghermeneus/AST/TextElement.h"
+#include "gcode/ElementFactory.h"
+#include "gcode/AST/MotionElement.h"
+#include "gcode/AST/ToolElement.h"
+#include "gcode/AST/CommentElement.h"
+#include "gcode/AST/ChangeElement.h"
+#include "gcode/AST/NumericElement.h"
+#include "gcode/AST/MachineElement.h"
+#include "gcode/AST/CoordinateElement.h"
+#include "gcode/AST/TextElement.h"
 
 
 namespace rg = ranges;
 namespace rv = ranges::views;
 
-namespace ghermeneus {
+namespace gcode {
 
 
 shared_opt_elem_t ElementFactory::newElement(const Token& token)

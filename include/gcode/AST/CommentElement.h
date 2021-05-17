@@ -2,12 +2,12 @@
 // Created by Jelle Spijker on 02-05-21.
 //
 
-#ifndef GHERMENEUS_COMMENTELEMENT_H
-#define GHERMENEUS_COMMENTELEMENT_H
+#ifndef GCODE_COMMENTELEMENT_H
+#define GCODE_COMMENTELEMENT_H
 
 #include "Element.h"
 
-namespace ghermeneus {
+namespace gcode {
 class CommentElement : public Element
 {
 public:
@@ -17,6 +17,6 @@ public:
 
   [[nodiscard]] bool isParent() const override;
 };
-}// namespace ghermeneus
+}// namespace gcode
 
-#endif// GHERMENEUS_COMMENTELEMENT_H
+#endif// GCODE_COMMENTELEMENT_H

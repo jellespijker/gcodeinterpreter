@@ -2,17 +2,17 @@
 // Created by Jelle Spijker on 02-05-21.
 //
 
-#ifndef GHERMENEUS_ELEMENT_H
-#define GHERMENEUS_ELEMENT_H
+#ifndef GCODE_ELEMENT_H
+#define GCODE_ELEMENT_H
 
 #include <map>
 #include <string>
 #include <utility>
 #include <vector>
 
-#include "ghermeneus/Token.h"
+#include "gcode/Token.h"
 
-namespace ghermeneus {
+namespace gcode {
 
 using row_t = std::map<const std::string, double>;
 
@@ -23,7 +23,7 @@ public:
 
   Element(const Token& token, const std::shared_ptr<Element>& variable);
 
-  Element(const Token& token, std::vector<std::shared_ptr<Element>>  variables);
+  Element(const Token& token, std::vector<std::shared_ptr<Element>> variables);
 
   virtual ~Element() = default;
 
@@ -41,6 +41,6 @@ private:
 using shared_elem_t = std::shared_ptr<Element>;
 using elem_vec_t = std::vector<shared_elem_t>;
 
-}// namespace ghermeneus
+}// namespace gcode
 
-#endif// GHERMENEUS_ELEMENT_H
+#endif// GCODE_ELEMENT_H

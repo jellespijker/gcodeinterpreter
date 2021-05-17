@@ -11,14 +11,14 @@
 #include <spdlog/fmt/ostr.h>
 
 
-#include "ghermeneus/Parser.h"
-#include "ghermeneus/ElementFactory.h"
+#include "gcode/Parser.h"
+#include "gcode/ElementFactory.h"
 
 namespace rv = ranges::views;
 namespace rg = ranges;
 using namespace std::literals;
 
-namespace ghermeneus {
+namespace gcode {
 
 Parser& operator<<(Parser& parser, Lexer& lexer)
 {

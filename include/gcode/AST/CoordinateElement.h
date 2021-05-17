@@ -2,12 +2,12 @@
 // Created by Jelle Spijker on 02-05-21.
 //
 
-#include "ghermeneus/AST/Element.h"
+#include "gcode/AST/Element.h"
 
-#ifndef GHERMENEUS_COORDINATEELEMENT_H
-#define GHERMENEUS_COORDINATEELEMENT_H
+#ifndef GCODE_COORDINATEELEMENT_H
+#define GCODE_COORDINATEELEMENT_H
 
-namespace ghermeneus {
+namespace gcode {
 class CoordinateElement : public Element
 {
 public:
@@ -17,6 +17,6 @@ public:
 
   [[nodiscard]] bool isParent() const override;
 };
-}// namespace ghermeneus
+}// namespace gcode
 
-#endif// GHERMENEUS_COORDINATEELEMENT_H
+#endif// GCODE_COORDINATEELEMENT_H

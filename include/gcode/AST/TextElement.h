@@ -2,12 +2,12 @@
 // Created by Jelle Spijker on 16-05-21.
 //
 
-#ifndef GHERMENEUS_TEXTELEMENT_H
-#define GHERMENEUS_TEXTELEMENT_H
+#ifndef GCODE_TEXTELEMENT_H
+#define GCODE_TEXTELEMENT_H
 
-#include "ghermeneus/AST/Element.h"
+#include "gcode/AST/Element.h"
 
-namespace ghermeneus {
+namespace gcode {
 class TextElement : public Element
 {
 public:
@@ -17,5 +17,5 @@ public:
 
   [[nodiscard]] bool isParent() const override;
 };
-}// namespace ghermeneus
-#endif// GHERMENEUS_TEXTELEMENT_H
+}// namespace gcode
+#endif// GCODE_TEXTELEMENT_H

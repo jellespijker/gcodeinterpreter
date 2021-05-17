@@ -10,13 +10,13 @@
 #include <spdlog/spdlog.h>
 #include <spdlog/fmt/ostr.h>
 
-#include "ghermeneus/Lexer.h"
+#include "gcode/Lexer.h"
 
 namespace rg = ranges;
 namespace rv = ranges::views;
 using namespace std::literals;
 
-namespace ghermeneus {
+namespace gcode {
 
 Lexer& operator<<(Lexer& lexer, std::string_view gcode)
 {

@@ -2,8 +2,8 @@
 // Created by Jelle Spijker on 25-04-21.
 //
 
-#ifndef GHERMENEUS_LEXER_H
-#define GHERMENEUS_LEXER_H
+#ifndef GCODE_LEXER_H
+#define GCODE_LEXER_H
 
 #include <string_view>
 #include <fstream>
@@ -11,9 +11,9 @@
 #include <vector>
 #include <regex>
 
-#include "ghermeneus/Token.h"
+#include "gcode/Token.h"
 
-namespace ghermeneus {
+namespace gcode {
 
 class Lexer
 {
@@ -44,6 +44,6 @@ using svsub_match = std::sub_match<std::string_view::const_iterator>;
   return std::string_view(m.first, static_cast<size_t>(m.length()));
 }
 
-}// namespace ghermeneus
+}// namespace gcode
 
-#endif// GHERMENEUS_LEXER_H
+#endif// GCODE_LEXER_H

@@ -2,12 +2,12 @@
 // Created by Jelle Spijker on 02-05-21.
 //
 
-#ifndef GHERMENEUS_NUMERICELEMENT_H
-#define GHERMENEUS_NUMERICELEMENT_H
+#ifndef GCODE_NUMERICELEMENT_H
+#define GCODE_NUMERICELEMENT_H
 
-#include "ghermeneus/AST/Element.h"
+#include "gcode/AST/Element.h"
 
-namespace ghermeneus {
+namespace gcode {
 class NumericElement : public Element
 {
 public:
@@ -17,6 +17,6 @@ public:
 
   [[nodiscard]] bool isParent() const override;
 };
-}// namespace ghermeneus
+}// namespace gcode
 
-#endif// GHERMENEUS_NUMERICELEMENT_H
+#endif// GCODE_NUMERICELEMENT_H

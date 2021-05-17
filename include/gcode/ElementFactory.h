@@ -2,17 +2,17 @@
 // Created by Jelle Spijker on 02-05-21.
 //
 
-#ifndef GHERMENEUS_ELEMENTFACTORY_H
-#define GHERMENEUS_ELEMENTFACTORY_H
+#ifndef GCODE_ELEMENTFACTORY_H
+#define GCODE_ELEMENTFACTORY_H
 
 #include <memory>
 #include <vector>
 #include <optional>
 
-#include "ghermeneus/Token.h"
-#include "ghermeneus/AST/Element.h"
+#include "gcode/Token.h"
+#include "gcode/AST/Element.h"
 
-namespace ghermeneus {
+namespace gcode {
 using shared_opt_elem_t = std::optional<shared_elem_t>;
 
 class ElementFactory
@@ -86,6 +86,6 @@ protected:
 
   [[nodiscard]] static shared_opt_elem_t newToolElement(const Token& cmd, const Token& arg);
 };
-}// namespace ghermeneus
+}// namespace gcode
 
-#endif// GHERMENEUS_ELEMENTFACTORY_H
+#endif// GCODE_ELEMENTFACTORY_H

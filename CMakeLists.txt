@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.15)
 
-project(ghermeneus CXX)
+project(gcode_interpreter CXX)
 include(cmake/StandardProjectSettings.cmake)
 include(cmake/PreventInSourceBuilds.cmake)
 
@@ -129,45 +129,45 @@ set(SRC_FILES
         )
 
 set(HDR_FILES
-        include/ghermeneus/Token.h
-        include/ghermeneus/Lexer.h
-        include/ghermeneus/Parser.h
-        include/ghermeneus/ElementFactory.h
-        include/ghermeneus/AST/Element.h
-        include/ghermeneus/AST/MachineElement.h
-        include/ghermeneus/AST/ToolElement.h
-        include/ghermeneus/AST/ChangeElement.h
-        include/ghermeneus/AST/MotionElement.h
-        include/ghermeneus/AST/CoordinateElement.h
-        include/ghermeneus/AST/CommentElement.h
-        include/ghermeneus/AST/NumericElement.h
-        include/ghermeneus/AST/TextElement.h
+        include/gcode/Token.h
+        include/gcode/Lexer.h
+        include/gcode/Parser.h
+        include/gcode/ElementFactory.h
+        include/gcode/AST/Element.h
+        include/gcode/AST/MachineElement.h
+        include/gcode/AST/ToolElement.h
+        include/gcode/AST/ChangeElement.h
+        include/gcode/AST/MotionElement.h
+        include/gcode/AST/CoordinateElement.h
+        include/gcode/AST/CommentElement.h
+        include/gcode/AST/NumericElement.h
+        include/gcode/AST/TextElement.h
         )
 
-add_library(ghermeneus STATIC ${SRC_FILES} ${HDR_FILES})
+add_library(gcodeinterpreter STATIC ${SRC_FILES} ${HDR_FILES})
 
-target_link_libraries(ghermeneus
+target_link_libraries(gcodeinterpreter
         PRIVATE
-            project_options
-            project_warnings)
+        project_options
+        project_warnings)
 
-target_compile_options(ghermeneus
+target_compile_options(gcodeinterpreter
         PRIVATE
-            -fPIC)
+        -fPIC)
 
-target_link_libraries(ghermeneus
+target_link_libraries(gcodeinterpreter
         PRIVATE
-            spdlog::spdlog
-            range-v3::range-v3
+        spdlog::spdlog
+        range-v3::range-v3
         )
 
-target_include_directories(ghermeneus
+target_include_directories(gcodeinterpreter
         PRIVATE
-            spdlog::spdlog
-            range-v3::range-v3
+        spdlog::spdlog
+        range-v3::range-v3
         )
 
-target_include_directories(ghermeneus PUBLIC
+target_include_directories(gcodeinterpreter PUBLIC
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
         $<INSTALL_INTERFACE:include>
         PRIVATE src)

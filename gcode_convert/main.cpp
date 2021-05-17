@@ -8,10 +8,10 @@
 #include <docopt/docopt.h>
 #include <map>
 
-#include "ghermeneus/Lexer.h"
-#include "ghermeneus/Parser.h"
+#include "gcode/Lexer.h"
+#include "gcode/Parser.h"
 
-using namespace ghermeneus;
+using namespace gcode;
 
 constexpr char USAGE[] =
   R"(gcode_convert
@@ -50,9 +50,9 @@ int main(int argc, char* argv[])
 
   std::ifstream gcode_file(input_file);
 
-  ghermeneus::Lexer lexer;
+  gcode::Lexer lexer;
   lexer << gcode_file;
 
-  ghermeneus::Parser parser;
+  gcode::Parser parser;
   parser << lexer;
 }

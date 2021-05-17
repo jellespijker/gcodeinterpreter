@@ -2,9 +2,9 @@
 // Created by Jelle Spijker on 25-04-21.
 //
 
-#include "ghermeneus/Token.h"
+#include "gcode/Token.h"
 
-namespace ghermeneus {
+namespace gcode {
 
 std::ostream& operator<<(std::ostream& os, const Token& token)
 {

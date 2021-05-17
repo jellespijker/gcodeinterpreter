@@ -2,12 +2,12 @@
 // Created by Jelle Spijker on 02-05-21.
 //
 
-#ifndef GHERMENEUS_MOTIONELEMENT_H
-#define GHERMENEUS_MOTIONELEMENT_H
+#ifndef GCODE_MOTIONELEMENT_H
+#define GCODE_MOTIONELEMENT_H
 
 #include "Element.h"
 
-namespace ghermeneus {
+namespace gcode {
 
 class MotionElement : public Element
 {
@@ -19,6 +19,6 @@ public:
   [[nodiscard]] bool isParent() const override;
 };
 
-}// namespace ghermeneus
+}// namespace gcode
 
-#endif// GHERMENEUS_MOTIONELEMENT_H
+#endif// GCODE_MOTIONELEMENT_H

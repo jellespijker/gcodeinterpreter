@@ -2,12 +2,12 @@
 // Created by Jelle Spijker on 02-05-21.
 //
 
-#ifndef GHERMENEUS_CHANGEELEMENT_H
-#define GHERMENEUS_CHANGEELEMENT_H
+#ifndef GCODE_CHANGEELEMENT_H
+#define GCODE_CHANGEELEMENT_H
 
 #include "Element.h"
 
-namespace ghermeneus {
+namespace gcode {
 class ChangeElement : public Element
 {
 public:
@@ -17,6 +17,6 @@ public:
 
   [[nodiscard]] bool isParent() const override;
 };
-}// namespace ghermeneus
+}// namespace gcode
 
-#endif// GHERMENEUS_CHANGEELEMENT_H
+#endif// GCODE_CHANGEELEMENT_H

@@ -2,15 +2,15 @@
 // Created by Jelle Spijker on 25-04-21.
 //
 
-#ifndef GHERMENEUS_PARSER_H
-#define GHERMENEUS_PARSER_H
+#ifndef GCODE_PARSER_H
+#define GCODE_PARSER_H
 
 #include <vector>
 
-#include "ghermeneus/Lexer.h"
-#include "ghermeneus/AST/Element.h"
+#include "gcode/Lexer.h"
+#include "gcode/AST/Element.h"
 
-namespace ghermeneus {
+namespace gcode {
 class Parser
 {
 public:
@@ -22,6 +22,6 @@ public:
 private:
   elem_vec_t m_ast;
 };
-}// namespace ghermeneus
+}// namespace gcode
 
-#endif// GHERMENEUS_PARSER_H
+#endif// GCODE_PARSER_H
